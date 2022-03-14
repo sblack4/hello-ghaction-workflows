@@ -34,6 +34,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
       - name: Do the needful
         run: |
+          echo "$env_name"
           if [ ! -f "$env_name" ]; then
             echo "$env_name" > "$env_name"
           fi
