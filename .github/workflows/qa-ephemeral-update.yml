@@ -1,0 +1,12 @@
+name: Update QA Ephemeral Env
+
+on:
+  push:
+    branches:
+      - 'qa/**'
+
+jobs:
+  create-environment:
+    runs-on: qa
+    steps:
+      - run: "echo ${{ github }}"
