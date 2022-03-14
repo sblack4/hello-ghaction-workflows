@@ -1,8 +1,9 @@
-name: Create QA Ephemeral Env
+name: Update QA Ephemeral Env
 
 on:
-  create:
-    
+  push:
+    branches:
+      - 'qa/**'
 
 jobs:
   create-environment:
