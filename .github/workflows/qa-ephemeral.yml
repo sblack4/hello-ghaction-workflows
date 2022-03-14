@@ -20,7 +20,7 @@ jobs:
       - name: set branch
         run: |
           echo "da branch ${{ github.event.ref }}"
-          echo "${{ github.event.ref }} | basename" > tmpfile
+          echo "${{ github.event.ref }}" | basename > tmpfile
           echo "::set-output name=env_name`cat tmpfile`"
 
 
@@ -35,7 +35,9 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
       - name: Do the needful
         run: |
-          echo "${{ needs.dump-context.outputs.env_name }}" > "${{ needs.dump-context.outputs.env_name }}"
+          if [ ! -f "${{ needs.dump-context.outputs.env_name }}" ]; then
+            echo "${{ needs.dump-context.outputs.env_name }}" > "${{ needs.dump-context.outputs.env_name }}"
+          fi
       - uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actions
