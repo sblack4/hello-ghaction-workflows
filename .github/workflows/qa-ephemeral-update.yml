@@ -10,5 +10,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-        apt install jq
-        echo "${{ github }}" | jq
+          apt install jq
+          echo "${{ github }}" | jq
