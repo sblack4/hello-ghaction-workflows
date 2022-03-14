@@ -7,6 +7,6 @@ on:
 
 jobs:
   create-environment:
-    runs-on: qa
+    runs-on: ubuntu-latest
     steps:
       - run: "echo ${{ github }}"
