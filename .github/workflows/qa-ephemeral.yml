@@ -34,6 +34,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
       - name: Do the needful
         run: |
+          ENV_NAME=`basename ${{ github.event.ref }}`
           echo $ENV_NAME
           if [ ! -f $ENV_NAME ]; then
             echo "$ENV_NAME" > $ENV_NAME
@@ -52,7 +53,9 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
       - name: Do the needful
-        run: echo "$GITHUB_SHA" >> $ENV_NAME
+        run: |
+          ENV_NAME=`basename ${{ github.event.ref }}`
+          echo "$GITHUB_SHA" >> $ENV_NAME
       - uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actions
@@ -68,6 +71,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
       - name: Do the needful
         run: |
+          ENV_NAME=`basename ${{ github.event.ref }}`
           cat "$ENV_NAME"
           rm $ENV_NAME
       - uses: EndBug/add-and-commit@v9
