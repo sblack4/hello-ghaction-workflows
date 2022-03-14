@@ -1,7 +1,4 @@
-name: Create QA Ephemeral Env
-
-env:
-  THEFILE: terriform.txt
+name: Create, Update, and/or Destroy QA Ephemeral Env
 
 on:
   create:
@@ -18,15 +15,27 @@ jobs:
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
+        run: |
+          echo "$GITHUB_CONTEXT"
+      - name: set branch
+        run: |
+          echo "da branch ${{ github.event.ref }}"
+          echo "${{ github.event.ref }} | basename" > tmpfile
+          echo "::set-output name=env_name`cat tmpfile`"
+
 
   create-env:
     if: ((github.event_name == 'create' && github.event.ref_type == 'branch') || github.event_name == 'push')
+    needs: dump-context
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
       - name: Do the needful
         run: |
-          echo "hello world" > $THEFILE
+          echo "${{ needs.build.outputs.env_name }}" > "${{ needs.build.outputs.env_name }}"
 
   update-env:
     if: github.event_name == 'push'
@@ -34,13 +43,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Do the needful
-        run: echo "work work work" >> $THEFILE
+        run: echo "$GITHUB_SHA" >> "${{ needs.build.outputs.env_name }}"
 
   delete-env:
     if: github.event_name == 'delete' && github.event.ref_type == 'branch'
+    needs: dump-context
     runs-on: ubuntu-latest
     steps:
       - name: Do the needful
         run: |
-          cat $THEFILE
-          rm $THEFILE
+          cat "${{ needs.build.outputs.env_name }}"
+          rm "${{ needs.build.outputs.env_name }}"
