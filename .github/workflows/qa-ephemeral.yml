@@ -1,9 +1,5 @@
 name: Create, Update, and/or Destroy QA Ephemeral Env
 
-env:
-  APP_VAR: foobar
-  BIG_NAME: "lil-${{ env.APP_VAR }}"
-
 on:
   create:
   delete:
@@ -21,11 +17,13 @@ jobs:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: |
           echo "$GITHUB_CONTEXT"
-          echo "$BIG_NAME"
       - name: set branch
         run: |
           echo "da branch ${{ github.event.ref }}"
           echo "ENV_NAME=`basename ${{ github.event.ref }}`" >> $GITHUB_ENV
+      - name: get branch
+        run: |
+          echo "$ENV_NAME"
 
 
   create-env:
