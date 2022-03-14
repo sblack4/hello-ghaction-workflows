@@ -29,7 +29,7 @@ jobs:
           echo "hello world" > $THEFILE
 
   update-env:
-    if: github.event_name == "push"
+    if: github.event_name == 'push'
     needs: create-env
     runs-on: ubuntu-latest
     steps:
@@ -37,7 +37,7 @@ jobs:
         run: echo "work work work" >> $THEFILE
 
   delete-env:
-    if: github.event_name == "delete" && github.event.ref_type == "branch"
+    if: github.event_name == 'delete' && github.event.ref_type == 'branch'
     runs-on: ubuntu-latest
     steps:
       - name: Do the needful
