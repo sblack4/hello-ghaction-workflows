@@ -1,0 +1,11 @@
+name: Create QA Ephemeral Env
+
+on:
+  create:
+    
+
+jobs:
+  create-environment:
+    runs-on: ubuntu-latest
+    steps:
+      - run: "echo ${{ github }}"
