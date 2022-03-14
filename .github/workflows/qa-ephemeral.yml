@@ -20,8 +20,7 @@ jobs:
       - name: set branch
         run: |
           echo "da branch ${{ github.event.ref }}"
-          echo "${{ github.event.ref }}" | basename > tmpfile
-          echo "::set-output name=env_name`cat tmpfile`"
+          echo "::set-output name=env_name`basename ${{ github.event.ref }}`"
 
 
   create-env:
