@@ -1,5 +1,9 @@
 name: Create, Update, and/or Destroy QA Ephemeral Env
 
+env:
+  APP_VAR: foobar
+  BIG_NAME: "lil-${APP_VAR}"
+
 on:
   create:
   delete:
