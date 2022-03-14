@@ -1,8 +1,14 @@
 name: Create QA Ephemeral Env
 
+env:
+  THEFILE: terriform.txt
+
 on:
   create:
-    
+  delete:
+  push:
+    branches:
+      - 'qa/**'
 
 jobs:
 
@@ -14,9 +20,27 @@ jobs:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
 
-  create-eng:
-    if: github.event.ref_type == "branch"
+  create-env:
+    if: (github.event_name == "create" && github.event.ref_type == "branch") || github.event_name == "push"
     runs-on: ubuntu-latest
     steps:
       - name: Do the needful
-        run: echo "ripe for the picking even when I'm not in season"
+        run: |
+          echo "hello world" > $THEFILE
+
+  update-env:
+    if: github.event_name == "push"
+    needs: create-env
+    runs-on: ubuntu-latest
+    steps:
+      - name: Do the needful
+        run: echo "work work work" >> $THEFILE
+
+  delete-env:
+    if: github.event_name == "delete" && github.event.ref_type == "branch"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Do the needful
+        run: |
+          cat $THEFILE
+          rm $THEFILE
