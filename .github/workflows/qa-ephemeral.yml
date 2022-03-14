@@ -19,7 +19,7 @@ jobs:
           echo "$GITHUB_CONTEXT"
       - name: set branch
         run: |
-          echo "da branch ${{ github.event.ref }}"
+          echo "naming all this stuff `basename ${{ github.event.ref }}`"
           echo "ENV_NAME=`basename ${{ github.event.ref }}`" >> $GITHUB_ENV
       - name: get branch
         run: |
