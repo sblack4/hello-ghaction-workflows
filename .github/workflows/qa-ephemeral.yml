@@ -30,8 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.event.ref_name }}
       - name: Do the needful
         run: |
           ENV_NAME=`basename ${{ github.event.ref }}`
@@ -50,8 +49,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.event.ref_name }}
       - name: Do the needful
         run: |
           ENV_NAME=`basename ${{ github.event.ref }}`
@@ -67,8 +65,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.event.ref_name }}
       - name: Do the needful
         run: |
           ENV_NAME=`basename ${{ github.event.ref }}`
