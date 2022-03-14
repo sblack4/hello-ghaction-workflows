@@ -9,5 +9,7 @@ jobs:
   create-environment:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          cat "${{ github }}" | jq
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
