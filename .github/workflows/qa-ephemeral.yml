@@ -20,7 +20,7 @@ jobs:
       - name: set branch
         run: |
           echo "da branch ${{ github.event.ref }}"
-          echo "::set-output name=env_name::`basename ${{ github.event.ref }}`"
+          echo "env_name=`basename ${{ github.event.ref }}`" > $GITHUB_ENV
 
 
   create-env:
@@ -34,8 +34,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
       - name: Do the needful
         run: |
-          if [ ! -f "${{ needs.dump-context.outputs.env_name }}" ]; then
-            echo "${{ needs.dump-context.outputs.env_name }}" > "${{ needs.dump-context.outputs.env_name }}"
+          if [ ! -f "$env_name" ]; then
+            echo "$env_name" > "$env_name"
           fi
       - uses: EndBug/add-and-commit@v9
         with:
@@ -51,7 +51,7 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
       - name: Do the needful
-        run: echo "$GITHUB_SHA" >> "${{ needs.dump-context.outputs.env_name }}"
+        run: echo "$GITHUB_SHA" >> "$env_name"
       - uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actions
@@ -67,8 +67,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
       - name: Do the needful
         run: |
-          cat "${{ needs.dump-context.outputs.env_name }}"
-          rm "${{ needs.dump-context.outputs.env_name }}"
+          cat "$env_name"
+          rm "$env_name"
       - uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actions
