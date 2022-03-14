@@ -9,4 +9,6 @@ jobs:
   create-environment:
     runs-on: ubuntu-latest
     steps:
-      - run: "echo ${{ github }}"
+      - run: |
+        apt install jq
+        echo "${{ github }}" | jq
