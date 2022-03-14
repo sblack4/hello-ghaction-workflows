@@ -35,7 +35,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
       - name: Do the needful
         run: |
-          echo "${{ needs.build.outputs.env_name }}" > "${{ needs.build.outputs.env_name }}"
+          echo "${{ needs.dump-context.outputs.env_name }}" > "${{ needs.dump-context.outputs.env_name }}"
       - uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actions
@@ -50,7 +50,7 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
       - name: Do the needful
-        run: echo "$GITHUB_SHA" >> "${{ needs.build.outputs.env_name }}"
+        run: echo "$GITHUB_SHA" >> "${{ needs.dump-context.outputs.env_name }}"
       - uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actions
@@ -66,8 +66,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
       - name: Do the needful
         run: |
-          cat "${{ needs.build.outputs.env_name }}"
-          rm "${{ needs.build.outputs.env_name }}"
+          cat "${{ needs.dump-context.outputs.env_name }}"
+          rm "${{ needs.dump-context.outputs.env_name }}"
       - uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actions
