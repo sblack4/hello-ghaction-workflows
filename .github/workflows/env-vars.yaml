@@ -1,6 +1,10 @@
 ---
 name: env vars
 
+env:
+  MY_GLOBAL_VAR: FOO
+  MY_OTHER_GLOBAL_VAR: BAR
+
 on:
   push:
 
@@ -14,6 +18,10 @@ jobs:
           MY_VAR: foo
           MY_OTHER_VAR: bar
           VAR_PATH: ${{ env.MY_VAR }}/${{ env.MY_OTHER_VAR }}
+          GLOBAL_VAR_PATH: ${{ env.MY_GLOBAL_VAR }}/${{ env.MY_OTHER_GLOBAL_VAR }}
         run: |
+          echo '$VAR_PATH'
           echo $VAR_PATH
+          echo '$GLOBAL_VAR_PATH'
+          echo $GLOBAL_VAR_PATH
           env
