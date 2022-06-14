@@ -15,13 +15,11 @@ jobs:
     steps:
       - name: foobar
         env:
-          MY_VAR: foo
-          MY_OTHER_VAR: bar
-          VAR_PATH: ${{ MY_VAR }}/${{ MY_OTHER_VAR }}
           GLOBAL_VAR_PATH: ${{ env.MY_GLOBAL_VAR }}/${{ env.MY_OTHER_GLOBAL_VAR }}
         run: |
-          echo '$VAR_PATH'
-          echo $VAR_PATH
+          set -x
           echo '$GLOBAL_VAR_PATH'
           echo $GLOBAL_VAR_PATH
           env
+          pwd 
+          whoami
