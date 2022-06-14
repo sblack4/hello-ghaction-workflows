@@ -1,0 +1,19 @@
+---
+name: env vars
+
+on:
+  push:
+
+jobs:
+
+  play-with-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: foobar
+        env:
+          MY_VAR: foo
+          MY_OTHER_VAR: bar
+          VAR_PATH: ${{ env.MY_VAR }}/${{ env.MY_OTHER_VAR }}
+        run: |
+          echo $VAR_PATH
+          env
