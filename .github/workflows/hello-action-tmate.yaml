@@ -6,5 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - uses: rhythmictech/actions-setup-tfenv@v0.0.2
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
