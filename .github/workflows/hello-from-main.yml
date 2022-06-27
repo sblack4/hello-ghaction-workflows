@@ -9,5 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     if: startsWith(github.event.ref, 'ma')
     steps:
-      - name: Run a one-line script
+      - name: hello wurld
         run: echo Hello, world!
