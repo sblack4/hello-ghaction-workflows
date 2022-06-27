@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: startsWith(github.event.ref, 'ma')
+    if: startsWith(github.event.ref, 'heads/ref/ma')
     steps:
       - name: hello wurld
         run: echo Hello, world!
