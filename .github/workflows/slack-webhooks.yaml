@@ -14,5 +14,4 @@ jobs:
 
       - uses: act10ns/slack@v1
         with:
-          status: ${{ job.status }}
-          message: "<a href={{workflowRunUrl}}>workflow</a>"
+          config: .github/config/slack.yaml
