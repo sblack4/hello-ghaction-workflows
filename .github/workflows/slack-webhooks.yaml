@@ -16,3 +16,7 @@ jobs:
         with:
           status: ${{ job.status }}
           config: .github/config/slack.yaml
+
+      - uses: act10ns/slack@v1
+        with:
+          status: ${{ job.status }}
