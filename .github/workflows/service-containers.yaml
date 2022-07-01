@@ -30,7 +30,7 @@ jobs:
     steps:
 
       - run: |
-        docker network ls
+          docker network ls
 
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
