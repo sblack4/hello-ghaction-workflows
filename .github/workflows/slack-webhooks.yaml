@@ -5,8 +5,12 @@ name: slack webhooks
 on:
   push:
 
+env:
+  env_value: greattor
+
 jobs:
-  slacker:
+
+  hellur:
     runs-on: ubuntu-latest
     env:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
@@ -14,9 +18,40 @@ jobs:
 
       - uses: act10ns/slack@v1.5.0
         with:
-          status: starting
-          config: .github/config/slack.yaml
+          status: Starting....!
+
+  failur:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - run: exit 1
+
+  succos:
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 0
+
+  slacker:
+    runs-on: ubuntu-latest
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    steps:
+
+      # - id: github-script
+      #   uses: actions/github-script@v6
+      #   with:
+      #     github-token: ${{ github.token }}
+      #     script: |
+      #       const wfRunJobs = await github.rest.actions.listJobsForWorkflowRun({
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         run_id: context.runId
+      #       })
+
+      - name: Summarize Workflow Status Action
+        id: workflow-status
+        uses: takayamaki/summarize-workflow-status@v1.0.0
 
       - uses: act10ns/slack@v1.5.0
         with:
-          status: ${{ job.status }}
+          status: ${{ steps.workflow-status.outputs.status }}
