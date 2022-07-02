@@ -20,6 +20,7 @@ jobs:
         with:
           status: Starting....!
           config: .github/config/slack.yaml
+          message: asdf ${{ env.env_value }}
 
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
@@ -66,4 +67,4 @@ jobs:
       - uses: act10ns/slack@v1.6.0
         with:
           status: ${{ steps.workflow-status.outputs.status }}
-          message: <{{workflowRunUrl}}|${{ steps.workflow-status.outputs.status }}> <https://butt.holdings/| here>
+          message: <{{workflowRunUrl}}|${{ steps.workflow-status.outputs.status }}> <https://butt.holdings/| here> ${{ env.env_value }}
