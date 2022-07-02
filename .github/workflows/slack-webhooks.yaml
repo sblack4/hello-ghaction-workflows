@@ -19,6 +19,8 @@ jobs:
       - uses: act10ns/slack@v1.5.0
         with:
           status: Starting....!
+          config: .github/config/slack.yaml
+
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
@@ -45,17 +47,6 @@ jobs:
     env:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     steps:
-
-      # - id: github-script
-      #   uses: actions/github-script@v6
-      #   with:
-      #     github-token: ${{ github.token }}
-      #     script: |
-      #       const wfRunJobs = await github.rest.actions.listJobsForWorkflowRun({
-      #         owner: context.repo.owner,
-      #         repo: context.repo.repo,
-      #         run_id: context.runId
-      #       })
 
       - name: Summarize Workflow Status Action
         id: workflow-status
