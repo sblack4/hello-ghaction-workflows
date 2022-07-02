@@ -7,6 +7,7 @@ on:
 
 env:
   env_value: greattor
+  site: https://butt.holdings/
 
 jobs:
 
@@ -20,7 +21,7 @@ jobs:
         with:
           status: Starting....!
           config: .github/config/slack.yaml
-          message: asdf ${{ env.env_value }}
+          message: asdf ${{ env.env_value }} ${{ env.site }} 
 
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
