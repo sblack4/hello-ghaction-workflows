@@ -19,6 +19,10 @@ jobs:
       - uses: act10ns/slack@v1.5.0
         with:
           status: Starting....!
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
   failur:
     runs-on: ubuntu-latest
