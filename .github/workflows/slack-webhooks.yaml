@@ -66,3 +66,4 @@ jobs:
       - uses: act10ns/slack@v1.6.0
         with:
           status: ${{ steps.workflow-status.outputs.status }}
+          message: try https://butt.holdings/
