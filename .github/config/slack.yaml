@@ -14,9 +14,10 @@ text: |
   <{{this.url}}|`{{truncate this.id 8}}`> - {{this.message}}
   {{/each}}
   {{/if}}
+  :eggplant: :eggplant: :eggplant:
 
 fallback: |-
-  [GitHub] {{workflow}} #{{runNumber}} {{jobName}} is {{jobStatus}}
+  [GitHub] {{workflow}} #{{runNumber}} {{jobName}} is {{jobStatus}} :eggplant: :eggplant: :eggplant:
 
 fields:
   - title: Job Steps
