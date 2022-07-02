@@ -34,6 +34,7 @@ jobs:
       - uses: 8398a7/action-slack@v3
         with:
           icon_url: https://confidence.corsis.com/favicon-32x32.png
+          icon_emoji: ":eggplant:"
           username: mrYouZorg
           author_name: mrBoopyBorthole
           status: ${{ job.status }}
