@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - master
+      - main
 
 jobs:
   tag_and_release:
