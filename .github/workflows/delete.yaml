@@ -26,6 +26,7 @@ jobs:
         run: exit1
       
       - name: rescue
+        uses: act10ns/slack@v1.5.0
         if: ${{ failure() }}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
