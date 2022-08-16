@@ -22,3 +22,10 @@ jobs:
       - name: Dump matrix context
         run: echo '${{ toJSON(matrix) }}'
         
+      - name: failure mcfailface
+        run: exit1
+      
+      - name: rescue
+        if: ${{ failure() }}
+        run: |
+          echo send a message to slack or something. idk
