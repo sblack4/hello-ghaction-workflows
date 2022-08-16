@@ -32,6 +32,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
           status: Failure
+          channel: '@Steven Black'
           message: >
-            @here Feature Environment Deletion Failed: <{{workflowRunUrl}}| ${{ env.environment }} workflow failed>.
+            Feature Environment Deletion Failed: <{{workflowRunUrl}}| ${{ env.environment }} workflow failed>.
 
