@@ -22,17 +22,3 @@ jobs:
       - name: Dump matrix context
         run: echo '${{ toJSON(matrix) }}'
         
-      - name: failure mcfailface
-        run: exit1
-      
-      - name: rescue
-        uses: act10ns/slack@v1.5.0
-        if: ${{ failure() }}
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        with:
-          status: Failure
-          channel: '@Steven Black'
-          message: >
-            Feature Environment Deletion Failed: <{{workflowRunUrl}}| ${{ env.environment }} workflow failed>.
-
