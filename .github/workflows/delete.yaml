@@ -27,5 +27,10 @@ jobs:
       
       - name: rescue
         if: ${{ failure() }}
-        run: |
-          echo send a message to slack or something. idk
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          status: Failure
+          message: >
+            @here Feature Environment Deletion Failed: <{{workflowRunUrl}}| ${{ env.environment }} workflow failed>.
+
