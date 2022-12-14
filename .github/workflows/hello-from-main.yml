@@ -1,13 +1,13 @@
 
-name: hello from main
+# name: hello from main
 
-on:
-  push:
+# on:
+#   push:
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    if: startsWith(github.event.ref, 'refs/heads/ma')
-    steps:
-      - name: hello wurld
-        run: echo Hello, world!
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     if: startsWith(github.event.ref, 'refs/heads/ma')
+#     steps:
+#       - name: hello wurld
+#         run: echo Hello, world!
