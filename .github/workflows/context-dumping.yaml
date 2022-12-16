@@ -3,6 +3,13 @@ name: Context testing
 on:
   release:
     types: [published] 
+  push:
+  workflow_dispatch:
+    inputs:
+      some_tag:
+        description: IDKLOL
+        required: true
+        type: string
 
 jobs:
 
