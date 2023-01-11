@@ -4,6 +4,7 @@ on:
   release:
     types: [published] 
   push:
+  delete:
   workflow_dispatch:
     inputs:
       some_tag:
