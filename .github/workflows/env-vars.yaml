@@ -5,7 +5,7 @@ name: env vars
 env:
   MY_GLOBAL_VAR: FOO
   MY_OTHER_GLOBAL_VAR: BAR
-  MYINPUTVALUE: ${{ inputs.value || "fooobar" }}
+  MYINPUTVALUE: ${{ inputs.value || fooobar }}
 
 on:
   push:
