@@ -5,6 +5,10 @@ on:
     types: [published] 
   push:
   delete:
+  pull_request:
+    types: [ opened, closed, reopened, synchronize ]
+    branches:
+      - "main"
   workflow_dispatch:
     inputs:
       some_tag:
