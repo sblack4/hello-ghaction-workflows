@@ -28,6 +28,6 @@ jobs:
           set -x
           echo '$GLOBAL_VAR_PATH'
           echo $GLOBAL_VAR_PATH
-          env
+          env | sort
           pwd 
           whoami
