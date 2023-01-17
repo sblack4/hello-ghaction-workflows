@@ -1,24 +1,24 @@
 
----
+# ---
 
-name: Q group tester
+# name: Q group tester
 
-concurrency:
-  group: feature-${{ github.event_name == 'delete' && format('refs/heads/{0}', github.event.ref) || github.event.ref }}
-  cancel-in-progress: false
+# concurrency:
+#   group: feature-${{ github.event_name == 'delete' && format('refs/heads/{0}', github.event.ref) || github.event.ref }}
+#   cancel-in-progress: false
 
-on:
-  delete:
-  push:
+# on:
+#   delete:
+#   push:
 
 
-jobs:
+# jobs:
 
-  dump_contexts_to_log:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dump GitHub context
-        id: github_context_step
-        run: echo '${{ toJSON(github) }}'
-      - name: shleep
-        run: sleep 60
+#   dump_contexts_to_log:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Dump GitHub context
+#         id: github_context_step
+#         run: echo '${{ toJSON(github) }}'
+#       - name: shleep
+#         run: sleep 60
