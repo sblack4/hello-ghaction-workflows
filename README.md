@@ -80,3 +80,31 @@ graph TD
     EX3[This loop is continuous, with each stage feeding<br>into the next, allowing for constant adaptation<br>and improvement based on the changing<br>environment and the outcomes of previous actions.]
   end
 ```
+
+# nichomachean ethics 
+```mermaid
+graph TD
+    A[Start: Individual] --> B[Identify Virtues]
+    B --> C[Practice Virtues]
+    C --> D[Develop Habits]
+    D --> E[Cultivate Practical Wisdom]
+    E --> F[Apply Golden Mean]
+    F --> G[Balance Extremes]
+    G --> H[Engage in Contemplation]
+    H --> I[Fulfill Potential]
+    I --> J[Achieve Eudaimonia]
+    
+    B --> K[Examples of Virtues]
+    K --> L[Courage]
+    K --> M[Justice]
+    K --> N[Temperance]
+    K --> O[Wisdom]
+    
+    E --> P[Consider Context]
+    P --> Q[Make Ethical Decisions]
+    Q --> R[Learn from Experience]
+    R --> E
+    
+    J --> S[Continuous Process]
+    S --> C
+```
