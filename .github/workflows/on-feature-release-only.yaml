@@ -15,11 +15,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+  
+      - name: Get release date
+        id: release_date
+        run: echo "RELEASE_DATE=$(echo ${{ github.event.release.published_at }} | date +'%Y%m%d')" >> $GITHUB_ENV
 
       # Add your deployment steps here
       - name: Deploy
         run: |
           echo 'run. do not walk'
+          echo $RELEASE_DATE
           
       - name: Dump GitHub context
         env:
