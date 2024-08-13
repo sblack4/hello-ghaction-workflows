@@ -5,6 +5,9 @@ on:
     types: [published]
     branches:
       - feature/*
+  push:
+    branches:
+      - feature/*
 
 jobs:
   deploy:
